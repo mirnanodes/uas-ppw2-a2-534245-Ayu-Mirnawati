@@ -2,22 +2,28 @@
 
 namespace Database\Seeders;
 
+use App\Models\Pegawai;
+use App\Models\Pekerjaan;
 use App\Models\User;
-// use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
     /**
-     * Seed the application's database.
+     * Seed pakai Factory - Mirna
      */
     public function run(): void
     {
-        // User::factory(10)->create();
-
+        // Create admin user
         User::factory()->create([
             'name' => 'Administrator',
             'email' => 'admin@mail.com',
         ]);
+
+        // Create 20 Pekerjaan menggunakan Factory - Mirna
+        Pekerjaan::factory()->count(20)->create();
+
+        // Create 50 Pegawai menggunakan Factory - Mirna
+        Pegawai::factory()->count(50)->create();
     }
 }
