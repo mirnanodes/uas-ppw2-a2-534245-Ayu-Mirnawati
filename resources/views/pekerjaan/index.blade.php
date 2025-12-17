@@ -30,10 +30,10 @@
                     <tbody class="divide-y divide-gray-100 bg-white">
                         @forelse($data as $k => $d)
                         <tr class="hover:bg-gray-50">
-                            <td class="px-4 py-3">{{ $k+1 }}</td>
+                            <td class="px-4 py-3">{{ $data->firstItem() + $k }}</td> {{-- Pagination number - Mirna --}}
                             <td class="px-4 py-3 font-medium text-gray-900">{{ $d->nama }}</td>
                             <td class="px-4 py-3 text-gray-600">{{ $d->deskripsi }}</td>
-                            <td class="px-4 py-3 text-gray-600">{{ 100 }}</td>
+                            <td class="px-4 py-3 text-gray-600">{{ $d->pegawai_count }}</td> {{-- Jumlah pegawai dinamis - Mirna --}}
                             <td class="px-4 py-3 text-center text-gray-600">
                                 <div class="inline-flex rounded-md shadow-sm" role="group">
                                     <a href="{{ route('pekerjaan.edit', ['id' => $d->id]) }}" class="cursor-pointer rounded-l-md border border-gray-300 bg-white px-3 py-1.5 text-xs font-medium text-blue-600 hover:bg-blue-50">
@@ -55,6 +55,12 @@
                     </tbody>
                 </table>
             </div>
+
+            {{-- Pagination Links - Mirna --}}
+            <div class="mt-4">
+                {{ $data->links() }}
+            </div>
+            {{-- End Pagination Links - Mirna --}}
 
         </div>
     </section>

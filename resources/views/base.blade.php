@@ -51,8 +51,8 @@
         <a href="#" class="flex items-center space-x-2 rtl:space-x-reverse">
             <img src="{{ asset('img/logo.png') }}" class="h-12" alt="Logo UGM"/>
             <div class="flex flex-col leading-tight">
-                <span class="text-lg md:text-xl font-bold text-[#631913]">NAMA SAYA</span>
-                <span class="text-xs md:text-sm font-semibold text-[#631913]">NIM SAYA</span>
+                <span class="text-lg md:text-xl font-bold text-[#631913]">AYU MIRNAWATI</span>
+                <span class="text-xs md:text-sm font-semibold text-[#631913]">24/534245/SV/24017</span>
             </div>
         </a>
         <button id="menu-btn" type="button" class="inline-flex flex-none items-center p-1 justify-center text-sm text-gray-400 rounded-lg md:hidden hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-600" aria-controls="navbar-default" aria-expanded="false">
@@ -70,7 +70,7 @@
                     <a href="{{ route('pekerjaan.index') }}" class="block py-2 px-3 md:p-0 transition-transform hover:scale-120 text-[#96291F] @yield('menupekerjaan')">Pekerjaan</a>
                 </li>
                 <li>
-                    <a href="#" class="block py-2 px-3 md:p-0 transition-transform hover:scale-120 text-[#96291F] @yield('menupegawai')">Pegawai</a>
+                    <a href="{{ route('pegawai.index') }}" class="block py-2 px-3 md:p-0 transition-transform hover:scale-120 text-[#96291F] @yield('menupegawai')">Pegawai</a>
                 </li>
             </ul>
         </div>
@@ -108,9 +108,9 @@
                 <div>
                     <div class="text-white text-right">
                         <h2 class="mb-2 text-sm font-semibold uppercase">Identitas Mahasiswa</h2>
-                        <p>Nama Saya</p>
-                        <p>NIM Saya</p>
-                        <p>Kelas Praktikum</p>
+                        <p>Ayu Mirnawati</p>
+                        <p>24/534245/SV/24017</p>
+                        <p>A2</p>
                     </div>
                 </div>
             </div>
@@ -129,5 +129,30 @@
     });
 </script>
 @stack('js')
+
+{{-- Notifikasi Pop-up - Mirna --}}
+@if(session('success'))
+<div id="toast-notification" class="fixed top-5 right-5 z-50 flex items-center w-full max-w-xs p-4 text-white bg-green-600 rounded-lg shadow-lg">
+    <div class="inline-flex items-center justify-center flex-shrink-0 w-8 h-8 text-green-200 bg-green-700 rounded-lg">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"></path>
+        </svg>
+    </div>
+    <div class="ml-3 text-sm font-medium">{{ session('success') }}</div>
+    <button type="button" onclick="closeToast()" class="ml-auto -mx-1.5 -my-1.5 text-white hover:text-gray-200 rounded-lg p-1.5 inline-flex h-8 w-8">
+        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+            <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
+        </svg>
+    </button>
+</div>
+<script>
+    function closeToast() {
+        document.getElementById('toast-notification').remove();
+    }
+    setTimeout(closeToast, 3000);
+</script>
+@endif
+{{-- End Notifikasi Pop-up - Mirna --}}
+
 </body>
 </html>
