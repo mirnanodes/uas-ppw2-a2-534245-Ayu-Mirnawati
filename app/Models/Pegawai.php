@@ -2,17 +2,26 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Pegawai extends Model
 {
-    use SoftDeletes; // Tambahan - Mirna
-    protected $table = 'pegawai';
-    protected $guarded = []; 
+    use HasFactory, SoftDeletes; // Tambahan HasFactory - Mirna
 
-    public function pegawai()
+    protected $table = 'pegawai';
+
+    protected $fillable = [
+        'pekerjaan_id',
+        'nama',
+        'email',
+        'gender',
+        'is_active',
+    ];
+
+    public function pekerjaan()
     {
-        return $this->hasOne(Pekerjaan::class);
+        return $this->belongsTo(Pekerjaan::class, 'pekerjaan_id');
     }
 }
